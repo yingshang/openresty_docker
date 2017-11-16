@@ -1,0 +1,27 @@
+{
+    "rulerset": [
+        {
+            "id": "200", 
+            "msg": "white IP", 
+            "pattern": "192.168.50.1", 
+            "mode": "normal", 
+            "status":"allow",
+            "log":"no",
+            "vars": {
+                "type": "remote_ip"
+            }
+        },
+        {
+            "id": "201", 
+            "msg": "white url", 
+            "pattern": "^/index.php%? or$", 
+            "mode": "normal", 
+            "status":"allow",
+            "log":"no",
+            "vars": {
+                "type": "request_uri"
+            }
+        }
+       
+    ]
+}
