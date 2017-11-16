@@ -72,7 +72,7 @@ local path = info.source
 path = string.sub(path, 2, -1)
 path = string.match(path, "^.*/")  
 ------------------------------------
-
+file = io.open("/data/waf/waf.log","a+")
 
 --检测table
 function check_table(t)
@@ -93,10 +93,10 @@ function logging(time,ip,rule_id,msg)
         _t1 = _t1..k..":"..v
     end
     packet = _t.._t1..post_data.."'"
-    file = io.open("/data/waf/waf.log","a+")
+    
     text = "{'timestamp':"..time..",'ip':'"..ip.."','rule_id':"..rule_id..",'msg':'"..msg.."',"..packet.."}\n"
     file:write(text)
-    file:close()
+    
 end
 
 
@@ -246,7 +246,7 @@ end
 rule_set = findindir()
 FileRead(rule_set)
 
-
+file:close()
 
 
     
