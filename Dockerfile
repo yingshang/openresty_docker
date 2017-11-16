@@ -21,10 +21,11 @@ RUN luarocks install luafilesystem
 #RUN yum install -y gettext elfutils-devel elfutils  kernel-devel
 #RUN cd /opt && git clone git://sourceware.org/git/systemtap.git
 #RUN cd /opt && cd systemtap/ && ./configure && make && make install 
+RUN yum -y install openssh-server openssh-clients 
 
 ADD waf /usr/local/openresty/nginx/conf/waf/
 COPY nginx.conf /usr/local/openresty/nginx/conf/
-ENTRYPOINT nginx && tail /data/waf/waf.log
+ENTRYPOINT nginx   && tail  -f /usr/local/openresty/nginx/logs/error.log
 
 
 
